@@ -1,0 +1,5 @@
+rootProject.name = 'batch-boilerplate'
+include 'repositories'
+
+include 'apps:fusion-batch'
+findProject(':apps:fusion-batch')?.name = 'fusion-batch'
