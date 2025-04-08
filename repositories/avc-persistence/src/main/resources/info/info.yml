@@ -1,0 +1,29 @@
+mybatis:
+  config-location: classpath:/config/mybatis-config.xml
+  mapper-locations: classpath:/sqlmap/mapper/**/*.xml
+
+logging:
+  pattern:
+    #    console: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
+    level: info
+  level:
+    com.mqnic.seobu_management: info
+    root: info
+    org.springframework: info
+    org.springframework.jdbc.core: info
+    #    org.springframework.jdbc.core.StatementCreatorUtils: Trace
+    java.sql: debug
+    javax.sql: debug
+    org.mybatis: debug
+    org.mybatis.spring: info
+#    com.zaxxer.hikari: info
+#    com.mqnic.vdsbatch.mapper: trace
+
+size:
+  chunk: 10_000
+  page: 1_000
+
+management:
+  endpoints:
+    jmx:
+      enabled: true

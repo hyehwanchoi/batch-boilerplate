@@ -1,0 +1,19 @@
+bootJar.enabled = false
+jar.enabled = true
+
+dependencies {
+//    implementation('org.springframework.boot:spring-boot-starter-web') {
+//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+//    }
+//    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    implementation project(":repositories:avc-persistence")
+
+    implementation 'org.springframework.boot:spring-boot-starter-batch'
+    implementation 'org.springframework.batch:spring-batch-core'
+    testImplementation 'org.springframework.batch:spring-batch-test'
+
+
+}

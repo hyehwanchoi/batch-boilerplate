@@ -1,5 +1,7 @@
 rootProject.name = 'batch-boilerplate'
-include 'repositories'
 
-include 'apps:fusion-batch'
-findProject(':apps:fusion-batch')?.name = 'fusion-batch'
+include 'apps:avc-batch'
+findProject(':apps:avc-batch')?.name = 'avc-batch'
+
+include 'repositories:avc-persistence'
+findProject(':repositories:avc-persistence')?.name = 'avc-persistence'

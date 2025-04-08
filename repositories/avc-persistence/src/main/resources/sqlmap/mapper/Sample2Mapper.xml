@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.batch.avcpersistence.mapper.Sample2EntityMapper">
+
+    <select id="getSample2DTOList" resultType="com.batch.avcpersistence.entities.Sample2Entity">
+        select strg_ymd, name
+        from mqnic.sample2
+    </select>
+
+</mapper>
