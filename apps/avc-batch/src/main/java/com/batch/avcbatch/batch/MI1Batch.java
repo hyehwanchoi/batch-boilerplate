@@ -38,7 +38,10 @@ public class MI1Batch {
     @Bean
     public Step sampleStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
         return new StepBuilder("sampleStep", jobRepository)
-                .tasklet(sampleTasklet(), transactionManager)
+                .<SampleDTO, SampleDTO>chunk(10, transactionManager)
+                .reader()
+                .processor()
+                .writer()
                 .build();
     }
 
