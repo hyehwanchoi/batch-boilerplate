@@ -9,4 +9,6 @@ import java.util.List;
 public interface Sample2EntityMapper {
 
     List<Sample2Entity> getSample2DTOList();
+
+    void bulkInsertSample2(List<Sample2Entity> entities);
 }

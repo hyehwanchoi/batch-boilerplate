@@ -6,8 +6,10 @@ plugins {
 
 bootJar.enabled = false
 
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 }
 
 subprojects {

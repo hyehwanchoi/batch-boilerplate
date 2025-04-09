@@ -7,17 +7,16 @@ logging:
     #    console: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
     level: info
   level:
-    com.mqnic.seobu_management: info
     root: info
     org.springframework: info
     org.springframework.jdbc.core: info
+    org.springframework.jdbc.datasource.init: debug
     #    org.springframework.jdbc.core.StatementCreatorUtils: Trace
     java.sql: debug
     javax.sql: debug
     org.mybatis: debug
     org.mybatis.spring: info
 #    com.zaxxer.hikari: info
-#    com.mqnic.vdsbatch.mapper: trace
 
 size:
   chunk: 10_000

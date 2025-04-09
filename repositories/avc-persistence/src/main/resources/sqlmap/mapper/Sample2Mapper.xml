@@ -4,8 +4,15 @@
 <mapper namespace="com.batch.avcpersistence.mapper.Sample2EntityMapper">
 
     <select id="getSample2DTOList" resultType="com.batch.avcpersistence.entities.Sample2Entity">
-        select strg_ymd, name
-        from mqnic.sample2
+        select id, name, description
+        from sample.sample2
     </select>
 
+    <insert id="bulkInsertSample2" parameterType="com.batch.avcpersistence.entities.Sample2Entity">
+        INSERT INTO sample.sample2(strg_ymd, name)
+        VALUES
+        <foreach collection="entities" item="item" separator=",">
+            (#{item.strgYmd}, #{item.name})
+        </foreach>
+    </insert>
 </mapper>

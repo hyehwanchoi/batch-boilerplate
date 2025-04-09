@@ -7,6 +7,8 @@ dependencies {
 //    }
 //    implementation 'org.springframework.boot:spring-boot-starter-undertow'
 
+    implementation project(':common')
+    
     runtimeOnly 'com.mysql:mysql-connector-j'
 
     implementation project(":repositories:avc-persistence")

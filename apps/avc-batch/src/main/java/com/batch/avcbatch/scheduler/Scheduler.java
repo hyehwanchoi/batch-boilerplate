@@ -1,26 +1,41 @@
 package com.batch.avcbatch.scheduler;
 
-import com.batch.avcbatch.batch.MI1Batch;
+import com.batch.avcbatch.batch.SampleBatch;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class Scheduler {
 
     private final JobLauncher jobLauncher;
-    private final MI1Batch mi1Batch;
+    private final Job sampleJob;
 
-    @Scheduled(cron = "10 * * * * *")  // 매 분 20초에 실행
-    public void runMI1() throws Exception {
+    private final SampleBatch sampleBatch;
+
+    @Scheduled(cron = "10 * * * * *")
+    public void sampleScheduler() throws Exception {
+        String startTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        log.info("{} started at {}", sampleJob.getName(), startTime);
+
         JobParameters params = new JobParametersBuilder()
-                .addLong("timestamp", System.currentTimeMillis()) // 중복 실행 방지용
+                .addLong("timestamp", System.currentTimeMillis())
                 .toJobParameters();
 
-        jobLauncher.run(mi1Batch.sampleJob(), params);
+        jobLauncher.run(sampleBatch.sampleJob(), params);
+
+        String endTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        log.info("{} ended at {}", sampleJob.getName(), endTime);
+
     }
 }
